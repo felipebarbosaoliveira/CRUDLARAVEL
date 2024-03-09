@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/carros',[CrudController::class, 'index'])->name('carros.index');
+Route::get('/carros/create',[CrudController::class, 'create'])->name('carros.create');
+Route::post('/carros',[CrudController::class, 'store'])->name('carros.store');
+Route::post('/carros{carros}',[CrudController::class, 'show'])->name('carros.show');
+Route::post('/carros{carros}/edit',[CrudController::class, 'edit'])->name('carros.edit');
+Route::put('/carros/{carros}',[CrudController::class, 'update'])->name('carros.update');
+Route::delete('/carros/{carros}',[CrudController::class, 'destroy'])->name('carros.destroy');
