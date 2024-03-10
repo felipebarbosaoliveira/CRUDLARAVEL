@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="pt-br" data-bs-theme="dark">
+=======
+<html lang="pt-br">
+>>>>>>> a0b6da2df8cd424bc6d8af3cf78996a028bab7d3
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +26,11 @@
             </ul>
         </header>
     </div>
+<<<<<<< HEAD
     @yield('content')
+=======
+    @yield('content');
+>>>>>>> a0b6da2df8cd424bc6d8af3cf78996a028bab7d3
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
