@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Carros;
 
 class CrudController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   public readonly Carros $carros;
+   public function __construct()
+   {
+    $this->carros = new Carros();
+   }
     public function index()
     {
-        //
+       $carros_= $this->carros->all();
+       return view('carros',['carros_tb'=>$carros_]);
     }
 
     /**
