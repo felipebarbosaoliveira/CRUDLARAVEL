@@ -1,5 +1,5 @@
 @extends('layout')
-@section('content');
+@section('content')
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -8,6 +8,7 @@
         <th scope="col">Modelo</th>
         <th scope="col">Ano</th>
         <th scope="col">Cor</th>
+        <th scope="col">Editar</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
         <td>{{$carro->modelo}}</td>
         <td>{{$carro->ano}}</td>
         <td>{{$carro->cor}}</td>
+        <td><a href="{{route('carros.edit',['carro'=>$carro])}}"<button type="button" class="btn btn-success" hres >Editar</button></td>
        
       </tr>
       @endforeach
