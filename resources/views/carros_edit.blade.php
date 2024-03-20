@@ -4,8 +4,7 @@
 <form action="{{route('carros.update',['carro'=>$carro->id])}}" method="POST">
     @csrf
     <input type="hidden" name="_method" value="PUT">
-    <div class="container">
-   
+  
       <legend>Editar carro</legend>
       <div class="mb-3">
         <label for="disabledTextInput" class="form-label">Marca</label>
@@ -25,7 +24,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Salvar</button>
    
-</div>
+
   </form>
 
 @endsection

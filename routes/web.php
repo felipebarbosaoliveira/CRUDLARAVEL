@@ -16,10 +16,11 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
+
 Route::get('/carros',[CrudController::class, 'index'])->name('carros.index');
 Route::get('/carros/create',[CrudController::class, 'create'])->name('carros.create');
 Route::post('/carros',[CrudController::class, 'store'])->name('carros.store');
-Route::post('/carros{carro}',[CrudController::class, 'show'])->name('carros.show');
+Route::post('/carros/{carro}',[CrudController::class, 'show'])->name('carros.show');
 Route::get('/carros/{carro}/edit',[CrudController::class, 'edit'])->name('carros.edit');
 Route::put('/carros/{carro}',[CrudController::class, 'update'])->name('carros.update');
 Route::delete('/carros/{carro}',[CrudController::class, 'destroy'])->name('carros.destroy');

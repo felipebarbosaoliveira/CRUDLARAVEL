@@ -54,9 +54,12 @@ class CrudController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $carro)
+    public function update(Request $request, string $id)
     {
-        var_dump($carro);
+        var_dump($id);
+        var_dump($request->all());
+        //$updated = $this->carro-where('id', $id)->update($request->all())
+       // $updated = $this->carros->where('id', $id)->update($request->except(['_token', '_method']));
     }
 
     /**
