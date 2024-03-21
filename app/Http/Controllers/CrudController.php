@@ -7,15 +7,15 @@ use App\Models\Carros;
 
 class CrudController extends Controller
 {
-   public readonly Carros $carros;
-   public function __construct()
-   {
-    $this->carros = new Carros();
-   }
+    public readonly Carros $carros;
+    public function __construct()
+    {
+        $this->carros = new Carros();
+    }
     public function index()
     {
-       $carros_= $this->carros->all();
-       return view('carros',['carros_tb'=>$carros_]);
+        $carros_ = $this->carros->all();
+        return view('carros', ['carros_tb' => $carros_]);
     }
 
     /**
@@ -23,7 +23,7 @@ class CrudController extends Controller
      */
     public function create()
     {
-        //
+        return view('carros_create');
     }
 
     /**
@@ -31,7 +31,17 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //var_dump($request->all());
+       $create = $this->carros->create(
+        ['marca'=>$request->input('marca'),
+        'modelo'=>$request->input('modelo'),
+        'ano'=>$request->input('ano'),
+        'cor'=>$request->input('cor')       
+        
+       ]);
+       if ($create) {
+        return redirect()->back()->with('message', 'Atualizado com sucesso');
+    } else return redirect()->back()->with('message', 'Erro');
     }
 
     /**
@@ -47,8 +57,8 @@ class CrudController extends Controller
      */
     public function edit(Carros $carro)
     {
-        return view('carros_edit',['carro'=>$carro]);
-       // var_dump($carro);
+        return view('carros_edit', ['carro' => $carro]);
+        // var_dump($carro);
     }
 
     /**
@@ -56,10 +66,13 @@ class CrudController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        var_dump($id);
-        var_dump($request->all());
+        // var_dump($id);
+        // var_dump($request->except());
         //$updated = $this->carro-where('id', $id)->update($request->all())
-       // $updated = $this->carros->where('id', $id)->update($request->except(['_token', '_method']));
+        $updated = $this->carros->where('id', $id)->update($request->except(['_token', '_method']));
+        if ($updated) {
+            return redirect()->back()->with('message', 'Atualizado com sucesso');
+        } else return redirect()->back()->with('message', 'Erro');
     }
 
     /**

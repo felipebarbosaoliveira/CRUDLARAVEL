@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="pt-br" data-bs-theme="dark">
@@ -12,6 +13,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
 </head>
+@yield('topo')
 
 <body>
     <div class="container">
@@ -20,17 +22,16 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a href="{{ route('home') }}" class="nav-link active"
                             aria-current="page">Home</a></li>
-                    <li class="nav-item"><a href="{{ route('carros.index') }}" class="nav-link">Lista</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+                    <li class="nav-item"><a href="{{ route('carros.index') }}" class="nav-link">Listar os carros</a></li>
+                    <li class="nav-item"><a href="{{route('carros.create')}}" class="nav-link">Adicionar um carro</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Excluir</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                 </ul>
             </header>
         </div>
 
-        @yield('content')
-
-
+      
+        @section('topo')  
         <div class="container">
             <footer class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
