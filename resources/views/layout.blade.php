@@ -13,7 +13,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
 </head>
-@yield('topo')
+
 
 <body>
     <div class="container">
@@ -30,8 +30,8 @@
             </header>
         </div>
 
+      @yield('content')
       
-        @section('topo')  
         <div class="container">
             <footer class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
