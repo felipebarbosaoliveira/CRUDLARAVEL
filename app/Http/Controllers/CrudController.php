@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Carros;
+use Illuminate\Support\Facades\Validator;
 
 class CrudController extends Controller
 {
@@ -31,25 +32,50 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
-       //var_dump($request->all());
-       $create = $this->carros->create(
-        ['marca'=>$request->input('marca'),
-        'modelo'=>$request->input('modelo'),
-        'ano'=>$request->input('ano'),
-        'cor'=>$request->input('cor')       
+        //var_dump($request->all());
+/*
+       $validacao= $this->validate($request,[
+            'marca'=>'required',
+            'modelo'=>'required',
+            'ano'=>'required',
+            'cor'=>'required'
+        ]);
         
-       ]);
-       if ($create) {
-        return redirect()->back()->with('message', 'Atualizado com sucesso');
-    } else return redirect()->back()->with('message', 'Erro');
+       $validacao= Validator::make($request->all(),[
+            'marca'=>'required',
+            'modelo'=>'required',
+            'ano'=>'required',
+            'cor'=>'required'
+        ]);
+    
+        if($validacao->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validacao)
+                ->withInput();
+        }
+        */
+        $create = $this->carros->create(
+            [
+                'marca' => $request->input('marca'),
+                'modelo' => $request->input('modelo'),
+                'ano' => $request->input('ano'),
+                'cor' => $request->input('cor')
+
+            ]
+        );
+        if ($create) {
+            return redirect()->route('carros.index');
+        } else return redirect()->back()->with('message', 'Erro');
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Carros $carro)
     {
-        //
+        return view('carros_show', ['carro' => $carro]);
     }
 
     /**
@@ -71,6 +97,7 @@ class CrudController extends Controller
         //$updated = $this->carro-where('id', $id)->update($request->all())
         $updated = $this->carros->where('id', $id)->update($request->except(['_token', '_method']));
         if ($updated) {
+            //return redirect()->route('carros.index');
             return redirect()->back()->with('message', 'Atualizado com sucesso');
         } else return redirect()->back()->with('message', 'Erro');
     }
@@ -80,6 +107,8 @@ class CrudController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //  var_dump('delete');
+        $this->carros->where('id', $id)->delete();
+        return redirect()->route('carros.index');
     }
 }

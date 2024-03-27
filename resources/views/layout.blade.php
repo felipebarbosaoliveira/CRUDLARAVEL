@@ -20,11 +20,9 @@
         <div class="container">
             <header class="d-flex justify-content-center py-3">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a href="{{ route('home') }}" class="nav-link active"
-                            aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="{{ route('carros.index') }}" class="nav-link">Listar os carros</a></li>
                     <li class="nav-item"><a href="{{route('carros.create')}}" class="nav-link">Adicionar um carro</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Excluir</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                 </ul>
             </header>

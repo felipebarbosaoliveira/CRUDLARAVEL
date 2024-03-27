@@ -10,6 +10,8 @@
         <th scope="col">Ano</th>
         <th scope="col">Cor</th>
         <th scope="col">Editar</th>
+        <th scope="col">Mostrar</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -22,7 +24,8 @@
         <td>{{$carro->ano}}</td>
         <td>{{$carro->cor}}</td>
         <td><a href="{{route('carros.edit',['carro'=>$carro])}}"<button type="button" class="btn btn-success" hres >Editar</button></td>
-       
+        <td><a href="{{route('carros.show',['carro'=>$carro])}}"<button type="button" class="btn btn-success" hres >Mostrar</button></td>
+          
       </tr>
       @endforeach
      
