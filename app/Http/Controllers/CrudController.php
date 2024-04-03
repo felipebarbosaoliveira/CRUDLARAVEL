@@ -33,14 +33,14 @@ class CrudController extends Controller
     public function store(Request $request)
     {
         //var_dump($request->all());
-/*
+
        $validacao= $this->validate($request,[
             'marca'=>'required',
             'modelo'=>'required',
             'ano'=>'required',
             'cor'=>'required'
         ]);
-        
+      /*  
        $validacao= Validator::make($request->all(),[
             'marca'=>'required',
             'modelo'=>'required',
@@ -93,13 +93,15 @@ class CrudController extends Controller
     public function update(Request $request, string $id)
     {
         // var_dump($id);
-        // var_dump($request->except());
+         //var_dump($request->all());
         //$updated = $this->carro-where('id', $id)->update($request->all())
+       
         $updated = $this->carros->where('id', $id)->update($request->except(['_token', '_method']));
         if ($updated) {
             //return redirect()->route('carros.index');
             return redirect()->back()->with('message', 'Atualizado com sucesso');
         } else return redirect()->back()->with('message', 'Erro');
+        
     }
 
     /**
