@@ -34,40 +34,46 @@ class CrudController extends Controller
     {
         //var_dump($request->all());
 
-       $validacao= $this->validate($request,[
-            'marca'=>'required',
-            'modelo'=>'required',
-            'ano'=>'required',
-            'cor'=>'required'
-        ]);
-      /*  
-       $validacao= Validator::make($request->all(),[
-            'marca'=>'required',
-            'modelo'=>'required',
-            'ano'=>'required',
-            'cor'=>'required'
-        ]);
-    
-        if($validacao->fails()){
+
+
+        $validacao = Validator::make(
+            $request->all(),
+            [
+                'marca' => 'required|max:50|min:3',
+                'modelo' => 'required',
+                'ano' => 'required',
+                'cor' => 'required'
+            ],
+            [
+                'marca.required' => "A marca deve ser preenchida com no máximo 50 caracteres e no minimo 3",
+                'marca.max'=>"A marca não pode ultrapassar 50 caracteres",
+                'marca.min'=>"A marca deve ter no mínimo 3 caracteres",
+                'ano.required' => "O ano deve ser preenchido",
+                'cor.required' => 'A cor deve ser preenchida'
+            ]
+
+        );
+
+        if ($validacao->fails()) {
             return redirect()
                 ->back()
                 ->withErrors($validacao)
                 ->withInput();
-        }
-        */
-        $create = $this->carros->create(
-            [
-                'marca' => $request->input('marca'),
-                'modelo' => $request->input('modelo'),
-                'ano' => $request->input('ano'),
-                'cor' => $request->input('cor')
+        } else {
 
-            ]
-        );
-        if ($create) {
-            return redirect()->route('carros.index');
-        } else return redirect()->back()->with('message', 'Erro');
-        
+            $create = $this->carros->create(
+                [
+                    'marca' => $request->input('marca'),
+                    'modelo' => $request->input('modelo'),
+                    'ano' => $request->input('ano'),
+                    'cor' => $request->input('cor')
+
+                ]
+            );
+            if ($create) {
+                return redirect()->route('carros.index');
+            } else return redirect()->back()->with('message', 'Erro');
+        }
     }
 
     /**
@@ -93,15 +99,14 @@ class CrudController extends Controller
     public function update(Request $request, string $id)
     {
         // var_dump($id);
-         //var_dump($request->all());
+        //var_dump($request->all());
         //$updated = $this->carro-where('id', $id)->update($request->all())
-       
+
         $updated = $this->carros->where('id', $id)->update($request->except(['_token', '_method']));
         if ($updated) {
             //return redirect()->route('carros.index');
             return redirect()->back()->with('message', 'Atualizado com sucesso');
         } else return redirect()->back()->with('message', 'Erro');
-        
     }
 
     /**
