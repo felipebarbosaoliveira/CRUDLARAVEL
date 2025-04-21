@@ -1,5 +1,7 @@
 @extends('layout')
 @section('content') 
+<title>B&Z Solutions</title>
+
 @if(session()->has('message'))
   {{session()->get('message')}}
 @endif
@@ -14,24 +16,24 @@
 @endif
 <form action="{{route('carros.store')}}" method="POST">
   @csrf   
-      <legend>Adicionar carro</legend>
+      <legend>Adicionar Veículo</legend>
       <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Marca</label>
-        <input type="text" id="disabledTextInput" name="marca" class="form-control">
+        <label for="disabledTextInput" class="form-label">Montadora</label>
+        <input type="text" id="disabledTextInput" name="marca" class="form-control" required>
       </div>
       <div class="mb-3">
         <label for="disabledTextInput" class="form-label">Modelo</label>
-        <input type="text" id="disabledTextInput" name="modelo" class="form-control">
+        <input type="text" id="disabledTextInput" name="modelo" class="form-control" required>
       </div>
       <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Ano</label>
-        <input type="text" id="disabledTextInput" name="ano" class="form-control">
+        <label for="disabledTextInput" class="form-label">Ano de Fabricação</label>
+        <input type="text" id="disabledTextInput" name="ano" class="form-control" required>
       </div>
       <div class="mb-3">
-        <label for="disabledTextInput" class="form-label">Cor</label>
-        <input type="text" id="disabledTextInput" name="cor" class="form-control">
+        <label for="disabledTextInput" class="form-label">Cor do Veículo</label>
+        <input type="text" id="disabledTextInput" name="cor" class="form-control" required>
       </div>
-      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button type="submit" class="btn btn-success">Confirmar adição do veículo</button>
    
 
   </form>

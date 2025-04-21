@@ -1,0 +1,35 @@
+
+
+.nav-item:hover {
+    background-color: wheat;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+/* Navbar Styles */
+.nav-pills .nav-link {
+    border-radius: 30px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #444; /* Cor do texto */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* Para o fundo da navbar */
+header {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}

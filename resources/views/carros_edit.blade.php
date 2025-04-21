@@ -2,7 +2,10 @@
 @section('content')
 @if(session()->has('message'))
   {{session()->get('message')}}
+
 @endif
+<title>B&Z Solutions</title>
+
     
 <form action="{{route('carros.update',['carro'=>$carro->id])}}" method="POST">
   @csrf

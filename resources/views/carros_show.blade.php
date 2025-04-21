@@ -1,5 +1,7 @@
 @extends('layout')
 @section('content')
+<title>B&Z Solutions</title>
+
     <form action="{{ route('carros.destroy',['carro'=>$carro->id])}}" method="POST">
         @csrf
         @method('DELETE')
